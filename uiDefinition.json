@@ -28,13 +28,72 @@
 						},
 						{
 							"name": "nrAppVms",
-							"type": "Microsoft.Common.TextBox",
-							"label": "Nr of Application VMS"
+							"type": "Microsoft.Common.DropDown",
+							"label": "Nr of Application VMS",
+							"multiselect": false,
+							"multiLine": false,
+							"constraints": {
+								"allowedValues": [
+								  {
+									"label": "1",
+									"value": "1"
+								  },
+								  {
+									"label": "2",
+									"value": "2"
+								  },
+								  {
+									"label": "3",
+									"value": "3"
+								  }
+								],
+								"required": true
+							  }
 						},
 						{
 							"name": "nrMediaVms",
-							"type": "Microsoft.Common.TextBox",
-							"label": "Nr of Media VMS"
+							"type": "Microsoft.Common.DropDown",
+							"label": "Nr of Media VMS",
+							"multiselect": false,
+							"multiLine": false,
+							"constraints": {
+								"allowedValues": [
+								  {
+									"label": "3",
+									"value": "3"
+								  },
+								  {
+									"label": "5",
+									"value": "5"
+								  },
+								  {
+									"label": "7",
+									"value": "7"
+								  },
+								  {
+									"label": "9",
+									"value": "9"
+								  },
+								  {
+									"label": "11",
+									"value": "11"
+								  },
+								  {
+									"label": "13",
+									"value": "13"
+								  },
+								  {
+									"label": "15",
+									"value": "15"
+								  },
+								  {
+									"label": "17",
+									"value": "17"
+								  }
+								],
+								"required": true
+							  }
+
 						}
 
 					]
