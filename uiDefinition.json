@@ -18,7 +18,7 @@
 						},
 						{
 							"name": "adminPassword",
-							"type": "Microsoft.Common.Password",
+							"type": "Microsoft.Common.PasswordBox",
 							"label": "Password for your volumezdemoUser"
 						},
 						{
