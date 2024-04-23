@@ -36,11 +36,11 @@
 								"allowedValues": [
 								  {
 									"label": "True",
-									"value": "t"
+									"value": true
 								  },
 								  {
 									"label": "false",
-									"value": "f"
+									"value": false
 								  }
 								],
 								"required": true
