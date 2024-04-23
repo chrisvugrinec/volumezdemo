@@ -14,13 +14,16 @@
           },
           "nrMediaVms" : {
                 "type": "int"
+          },
+          "deployBastion" : {
+                "type": "bool"
           }
   },
   "metadata": {
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "4748296493650611769"
+      "templateHash": "7438968848835077313"
     }
   },
   "functions": [
@@ -62,6 +65,9 @@
     },
     "nrMediaVms": {
       "type": "int"
+    },
+    "deployBastion": {
+      "type": "bool"
     }
   },
   "variables": {
@@ -97,6 +103,9 @@
           },
           "projectName": {
             "value": "[variables('projectName')]"
+          },
+          "deployBastion": {
+            "value": "[parameters('deployBastion')]"
           }
         },
         "template": {
@@ -106,7 +115,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.26.170.59819",
-              "templateHash": "6265701531600171623"
+              "templateHash": "5250888116536140862"
             }
           },
           "parameters": {
@@ -121,6 +130,9 @@
             },
             "projectName": {
               "type": "string"
+            },
+            "deployBastion": {
+              "type": "bool"
             }
           },
           "resources": [
@@ -1324,6 +1336,7 @@
               ]
             },
             {
+              "condition": "[parameters('deployBastion')]",
               "type": "Microsoft.Resources/deployments",
               "apiVersion": "2022-09-01",
               "name": "bastionHostDeployment",

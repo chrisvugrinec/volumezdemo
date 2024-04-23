@@ -2,6 +2,7 @@ param snetName string
 param vnetName string
 param location string
 param projectName string
+param deployBastion bool
 
 module virtualNetwork 'br/public:avm/res/network/virtual-network:0.1.5' = {
   name: 'virtualNetworkDeployment'
@@ -29,12 +30,11 @@ module virtualNetwork 'br/public:avm/res/network/virtual-network:0.1.5' = {
 }
 
 
-module bastionHost 'br/public:avm/res/network/bastion-host:0.2.1' = {
+module bastionHost 'br/public:avm/res/network/bastion-host:0.2.1' = if (deployBastion) {
   name: 'bastionHostDeployment'
   params: {
     name: 'bas-${projectName}-net'
     virtualNetworkResourceId: resourceId('Microsoft.Network/VirtualNetworks', vnetName )
-    // Non-required parameters
     location: location
     publicIPAddressObject: {
       allocationMethod: 'Static'
@@ -42,9 +42,7 @@ module bastionHost 'br/public:avm/res/network/bastion-host:0.2.1' = {
       publicIPPrefixResourceId: ''
       skuName: 'Standard'
       skuTier: 'Regional'
-      zones: [
-        1
-      ]
+      zones: [ 1 ]
     }
   }
 }

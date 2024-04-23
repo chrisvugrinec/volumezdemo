@@ -27,6 +27,26 @@
 							"label": "You can find your tenant_token in the Volumez developer info"
 						},
 						{
+							"name": "deployBastion",
+							"type": "Microsoft.Common.DropDown",
+							"label": "Deploy a Bastion Host",
+							"multiselect": false,
+							"multiLine": false,
+							"constraints": {
+								"allowedValues": [
+								  {
+									"label": "True",
+									"value": true
+								  },
+								  {
+									"label": "false",
+									"value": false
+								  }
+								],
+								"required": true
+							  }		
+						},
+						{
 							"name": "nrAppVms",
 							"type": "Microsoft.Common.DropDown",
 							"label": "Nr of Application VMS",
