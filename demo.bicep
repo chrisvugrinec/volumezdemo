@@ -121,6 +121,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
     location: location
     encryptionAtHost: false
   }
+  dependsOn : [ demonetwork ]
 }]
 
 
@@ -172,6 +173,7 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     location: location
     encryptionAtHost: false
   }
+  dependsOn : [ demonetwork ]
 }]
 
 

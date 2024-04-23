@@ -23,7 +23,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "7438968848835077313"
+      "templateHash": "16597195123368640858"
     }
   },
   "functions": [
@@ -10382,6 +10382,7 @@
         }
       },
       "dependsOn": [
+        "demonetwork",
         "proximityPlacementGroup"
       ]
     },
@@ -15475,6 +15476,7 @@
         }
       },
       "dependsOn": [
+        "demonetwork",
         "proximityPlacementGroup"
       ]
     }
