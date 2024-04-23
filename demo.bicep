@@ -13,10 +13,8 @@ func replaceMultiple(input string, replacements { *: string }) string => reduce(
 @secure()
 param adminPassword string
 param tenant_token string
-
-
-var nrAppVms = 1
-var nrMediaVms = 3
+param nrAppVms int
+param nrMediaVms int
 var sizeAppVm = 'Standard_D64_v5'
 var sizeMediaVm = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
@@ -71,7 +69,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
 /*
 #######################################################################################
 #
-#  Virtual Machines: app-vms 
+#  Virtual Machines: app-vms  + media-vms
 #
 #######################################################################################
 */
