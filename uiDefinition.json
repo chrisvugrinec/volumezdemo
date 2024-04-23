@@ -125,7 +125,8 @@
 				"adminPassword": "[steps('basics').adminPassword]",
 				"tenant_token": "[steps('basics').tenant_token]",
 				"nrAppVms": "[steps('basics').nrAppVms]",
-				"nrMediaVms": "[steps('basics').nrMediaVms]"
+				"nrMediaVms": "[steps('basics').nrMediaVms]",
+				"deployBastion": "[steps('basics').deployBastion]"
 			},
 			"kind": "Subscription",                        
 			"subscriptionId": "[steps('basics').resourceScope.subscription.id]",
