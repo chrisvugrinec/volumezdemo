@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "18331501582757288194"
+      "templateHash": "3291647784797791029"
     }
   },
   "functions": [
@@ -50,13 +50,14 @@
       "type": "int"
     },
     "deployBastion": {
-      "type": "bool"
+      "type": "string"
     },
     "region": {
       "type": "string"
     }
   },
   "variables": {
+    "deployBastionBool": "[bool(parameters('deployBastion'))]",
     "sizeAppVm": "Standard_D64_v5",
     "sizeMediaVm": "Standard_L8as_v3",
     "projectName": "volumezdemo",
@@ -90,7 +91,7 @@
             "value": "[variables('projectName')]"
           },
           "deployBastion": {
-            "value": "[parameters('deployBastion')]"
+            "value": "[variables('deployBastionBool')]"
           }
         },
         "template": {
