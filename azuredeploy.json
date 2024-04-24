@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "6313285687464557017"
+      "templateHash": "18432164691110573199"
     }
   },
   "functions": [
@@ -52,13 +52,12 @@
     "deployBastion": {
       "type": "string"
     },
-    "region": {
+    "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
-    "regionFix": "[parameters('region')]",
     "deployBastionBool": "[bool(parameters('deployBastion'))]",
     "sizeAppVm": "Standard_D64_v5",
     "sizeMediaVm": "Standard_L8as_v3",
@@ -86,8 +85,8 @@
           "vnetName": {
             "value": "[variables('vnetName')]"
           },
-          "region": {
-            "value": "[variables('regionFix')]"
+          "location": {
+            "value": "[parameters('location')]"
           },
           "projectName": {
             "value": "[variables('projectName')]"
@@ -103,7 +102,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.26.170.59819",
-              "templateHash": "602064623126905638"
+              "templateHash": "6038393515763047453"
             }
           },
           "parameters": {
@@ -113,9 +112,8 @@
             "vnetName": {
               "type": "string"
             },
-            "region": {
-              "type": "string",
-              "defaultValue": "[resourceGroup().location]"
+            "location": {
+              "type": "string"
             },
             "projectName": {
               "type": "string"
@@ -144,7 +142,7 @@
                     "value": "[parameters('vnetName')]"
                   },
                   "location": {
-                    "value": "[parameters('region')]"
+                    "value": "[parameters('location')]"
                   },
                   "subnets": {
                     "value": [
@@ -1342,7 +1340,7 @@
                     "value": "[resourceId('Microsoft.Network/VirtualNetworks', parameters('vnetName'))]"
                   },
                   "location": {
-                    "value": "[parameters('region')]"
+                    "value": "[parameters('location')]"
                   },
                   "publicIPAddressObject": {
                     "value": {
@@ -2507,7 +2505,7 @@
                     "value": "[format('nsg-{0}-{1}', parameters('projectName'), deployment().name)]"
                   },
                   "location": {
-                    "value": "[parameters('region')]"
+                    "value": "[parameters('location')]"
                   },
                   "securityRules": {
                     "value": [
@@ -3271,7 +3269,7 @@
                     "value": 30
                   },
                   "location": {
-                    "value": "[parameters('region')]"
+                    "value": "[parameters('location')]"
                   }
                 },
                 "template": {
@@ -3593,7 +3591,7 @@
                     ]
                   },
                   "location": {
-                    "value": "[parameters('region')]"
+                    "value": "[parameters('location')]"
                   },
                   "publicIPPrefixResourceIds": {
                     "value": [
@@ -4991,7 +4989,7 @@
             "value": "[format('ppg-{0}', variables('projectName'))]"
           },
           "location": {
-            "value": "[variables('regionFix')]"
+            "value": "[parameters('location')]"
           }
         },
         "template": {
@@ -5363,7 +5361,7 @@
             "value": false
           },
           "location": {
-            "value": "[variables('regionFix')]"
+            "value": "[parameters('location')]"
           },
           "encryptionAtHost": {
             "value": false
@@ -10457,7 +10455,7 @@
             "value": false
           },
           "location": {
-            "value": "[variables('regionFix')]"
+            "value": "[parameters('location')]"
           },
           "encryptionAtHost": {
             "value": false

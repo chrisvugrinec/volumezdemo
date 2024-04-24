@@ -1,6 +1,6 @@
 param snetName string
 param vnetName string
-param location string  = resourceGroup().location
+param location string
 param projectName string
 param deployBastion bool
 
