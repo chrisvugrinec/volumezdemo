@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "3291647784797791029"
+      "templateHash": "9943992469668741759"
     }
   },
   "functions": [
@@ -57,6 +57,7 @@
     }
   },
   "variables": {
+    "regionFix": "[parameters('region')]",
     "deployBastionBool": "[bool(parameters('deployBastion'))]",
     "sizeAppVm": "Standard_D64_v5",
     "sizeMediaVm": "Standard_L8as_v3",
@@ -85,7 +86,7 @@
             "value": "[variables('vnetName')]"
           },
           "region": {
-            "value": "[parameters('region')]"
+            "value": "[variables('regionFix')]"
           },
           "projectName": {
             "value": "[variables('projectName')]"
@@ -5357,7 +5358,7 @@
             "value": false
           },
           "location": {
-            "value": "[parameters('region')]"
+            "value": "[variables('regionFix')]"
           },
           "encryptionAtHost": {
             "value": false
@@ -10451,7 +10452,7 @@
             "value": false
           },
           "location": {
-            "value": "[parameters('region')]"
+            "value": "[variables('regionFix')]"
           },
           "encryptionAtHost": {
             "value": false
