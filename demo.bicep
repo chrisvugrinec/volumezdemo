@@ -16,7 +16,7 @@ param tenant_token string
 param nrAppVms int
 param nrMediaVms int
 param deployBastion string
-param region string
+param region string = resourceGroup().location
 var regionFix = region
 var deployBastionBool = bool(deployBastion) 
 var sizeAppVm = 'Standard_D64_v5'
@@ -67,6 +67,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
   name: 'proximityPlacementGroupDeployment'
   params: {
     name: 'ppg-${projectName}'
+    location: regionFix
   }
 }
 

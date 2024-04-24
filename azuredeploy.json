@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "9943992469668741759"
+      "templateHash": "13094601282136219265"
     }
   },
   "functions": [
@@ -53,7 +53,8 @@
       "type": "string"
     },
     "region": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     }
   },
   "variables": {
@@ -4987,6 +4988,9 @@
         "parameters": {
           "name": {
             "value": "[format('ppg-{0}', variables('projectName'))]"
+          },
+          "location": {
+            "value": "[variables('regionFix')]"
           }
         },
         "template": {
