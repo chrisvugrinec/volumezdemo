@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "11725042196439735708"
+      "templateHash": "5256648989083684001"
     }
   },
   "functions": [
@@ -101,7 +101,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.26.170.59819",
-              "templateHash": "9882029447351576955"
+              "templateHash": "2036701754667907439"
             }
           },
           "parameters": {
@@ -112,7 +112,8 @@
               "type": "string"
             },
             "location": {
-              "type": "string"
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
             },
             "projectName": {
               "type": "string"
@@ -4986,9 +4987,6 @@
         "parameters": {
           "name": {
             "value": "[format('ppg-{0}', variables('projectName'))]"
-          },
-          "location": {
-            "value": "[parameters('location')]"
           }
         },
         "template": {
