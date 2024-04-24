@@ -84,9 +84,10 @@
           "vnetName": {
             "value": "[variables('vnetName')]"
           },
-          "location": {
-            "value": "[parameters('location')]"
-          },
+		  "location": {
+			"type": "string",
+			"defaultValue": "[resourceGroup().location]"
+		   },
           "projectName": {
             "value": "[variables('projectName')]"
           },
@@ -4984,9 +4985,10 @@
           "name": {
             "value": "[format('ppg-{0}', variables('projectName'))]"
           },
-          "location": {
-            "value": "[parameters('location')]"
-          }
+    	  "location": {
+      		"type": "string",
+      		"defaultValue": "[resourceGroup().location]"
+    	  }
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -15468,3 +15470,4 @@
     }
   }
 }
+
