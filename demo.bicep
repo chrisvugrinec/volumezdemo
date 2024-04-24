@@ -16,12 +16,13 @@ param tenant_token string
 param nrAppVms int
 param nrMediaVms int
 param deployBastion bool
+param location string
 var sizeAppVm = 'Standard_D64_v5'
 var sizeMediaVm = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
 var snetName = 'snet-${projectName}-vms'
 var vnetName = 'vnet-${projectName}-services'
-var location = 'westeurope'
+
 
 var signup_domain = 'signup.volumez.com'
 var script = loadTextContent('./scripts/deploy_connector.sh')

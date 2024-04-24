@@ -126,7 +126,8 @@
 				"tenant_token": "[steps('basics').tenant_token]",
 				"nrAppVms": "[steps('basics').nrAppVms]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
-				"deployBastion": "[steps('basics').deployBastion]"
+				"deployBastion": "[steps('basics').deployBastion]",
+                                "location": "[steps('basics').resourceScope.location.name]"
 			},
 			"kind": "Subscription",                        
 			"subscriptionId": "[steps('basics').resourceScope.subscription.id]",
