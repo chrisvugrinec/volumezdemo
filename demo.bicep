@@ -16,7 +16,7 @@ param tenant_token string
 param nrAppVms int
 param nrMediaVms int
 param deployBastion bool
-param location string 
+param region string 
 var sizeAppVm = 'Standard_D64_v5'
 var sizeMediaVm = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
@@ -47,7 +47,7 @@ module demonetwork './demo-network.bicep' = {
   params: {
     snetName : snetName
     vnetName : vnetName
-    location : location
+    region : region
     projectName : projectName
     deployBastion : deployBastion
   }
@@ -118,7 +118,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
     vmSize: sizeAppVm 
     configurationProfile: '/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction'
     disablePasswordAuthentication: false
-    location: location
+    location : region
     encryptionAtHost: false
   }
   dependsOn : [ demonetwork ]
@@ -170,7 +170,7 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     // Non-required parameters
     configurationProfile: '/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction'
     disablePasswordAuthentication: false
-    location: location
+    location : region
     encryptionAtHost: false
   }
   dependsOn : [ demonetwork ]

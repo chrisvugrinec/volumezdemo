@@ -1,6 +1,6 @@
 param snetName string
 param vnetName string
-param location string = resourceGroup().location
+param region string
 param projectName string
 param deployBastion bool
 
@@ -11,7 +11,7 @@ module virtualNetwork 'br/public:avm/res/network/virtual-network:0.1.5' = {
       '10.0.0.0/16'
     ]
     name: vnetName
-    location: location
+    location : region
     subnets: [
       {
         addressPrefix: '10.0.0.0/24'
@@ -34,9 +34,9 @@ module bastionHost 'br/public:avm/res/network/bastion-host:0.2.1' = if (deployBa
   params: {
     name: 'bas-${projectName}-${deployment().name}'
     virtualNetworkResourceId: resourceId('Microsoft.Network/VirtualNetworks', vnetName )
-    location: location
+    location : region
     publicIPAddressObject: {
-      allocationMethod: 'Static'
+      alregionMethod: 'Static'
       name: 'pip-${projectName}-net'
       publicIPPrefixResourceId: ''
       skuName: 'Standard'
@@ -51,7 +51,7 @@ module networkSecurityGroup 'br/public:avm/res/network/network-security-group:0.
   name: 'networkSecurityGroupDeployment'
   params: {
     name: 'nsg-${projectName}-${deployment().name}'
-    location: location
+    location : region
     securityRules: [
       {
         name: 'allow_ssh_in'
@@ -127,7 +127,7 @@ module publicIpPrefix 'br/public:avm/res/network/public-ip-prefix:0.3.0' = {
   params: {
     name: 'pipfx-${projectName}-${deployment().name}'
     prefixLength: 30
-    location: location
+    location : region
   }
 }
 
@@ -136,7 +136,7 @@ module natGateway 'br/public:avm/res/network/nat-gateway:1.0.4' = {
   params: {
     name: 'ngw-${projectName}-${deployment().name}'
     zones: [ 1 ]
-    location: location
+    location : region
     publicIPPrefixResourceIds: [ publicIpPrefix.outputs.resourceId ]
   }
   dependsOn: [

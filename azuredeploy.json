@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "6281862042625970113"
+      "templateHash": "18331501582757288194"
     }
   },
   "functions": [
@@ -52,7 +52,7 @@
     "deployBastion": {
       "type": "bool"
     },
-    "location": {
+    "region": {
       "type": "string"
     }
   },
@@ -83,8 +83,8 @@
           "vnetName": {
             "value": "[variables('vnetName')]"
           },
-          "location": {
-            "value": "[parameters('location')]"
+          "region": {
+            "value": "[parameters('region')]"
           },
           "projectName": {
             "value": "[variables('projectName')]"
@@ -100,7 +100,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.26.170.59819",
-              "templateHash": "2036701754667907439"
+              "templateHash": "11373196300456467451"
             }
           },
           "parameters": {
@@ -110,9 +110,8 @@
             "vnetName": {
               "type": "string"
             },
-            "location": {
-              "type": "string",
-              "defaultValue": "[resourceGroup().location]"
+            "region": {
+              "type": "string"
             },
             "projectName": {
               "type": "string"
@@ -141,7 +140,7 @@
                     "value": "[parameters('vnetName')]"
                   },
                   "location": {
-                    "value": "[parameters('location')]"
+                    "value": "[parameters('region')]"
                   },
                   "subnets": {
                     "value": [
@@ -1339,11 +1338,11 @@
                     "value": "[resourceId('Microsoft.Network/VirtualNetworks', parameters('vnetName'))]"
                   },
                   "location": {
-                    "value": "[parameters('location')]"
+                    "value": "[parameters('region')]"
                   },
                   "publicIPAddressObject": {
                     "value": {
-                      "allocationMethod": "Static",
+                      "alregionMethod": "Static",
                       "name": "[format('pip-{0}-net', parameters('projectName'))]",
                       "publicIPPrefixResourceId": "",
                       "skuName": "Standard",
@@ -2504,7 +2503,7 @@
                     "value": "[format('nsg-{0}-{1}', parameters('projectName'), deployment().name)]"
                   },
                   "location": {
-                    "value": "[parameters('location')]"
+                    "value": "[parameters('region')]"
                   },
                   "securityRules": {
                     "value": [
@@ -3268,7 +3267,7 @@
                     "value": 30
                   },
                   "location": {
-                    "value": "[parameters('location')]"
+                    "value": "[parameters('region')]"
                   }
                 },
                 "template": {
@@ -3590,7 +3589,7 @@
                     ]
                   },
                   "location": {
-                    "value": "[parameters('location')]"
+                    "value": "[parameters('region')]"
                   },
                   "publicIPPrefixResourceIds": {
                     "value": [
@@ -5357,7 +5356,7 @@
             "value": false
           },
           "location": {
-            "value": "[parameters('location')]"
+            "value": "[parameters('region')]"
           },
           "encryptionAtHost": {
             "value": false
@@ -10451,7 +10450,7 @@
             "value": false
           },
           "location": {
-            "value": "[parameters('location')]"
+            "value": "[parameters('region')]"
           },
           "encryptionAtHost": {
             "value": false
