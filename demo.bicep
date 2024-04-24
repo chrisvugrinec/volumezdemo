@@ -16,8 +16,7 @@ param tenant_token string
 param nrAppVms int
 param nrMediaVms int
 param deployBastion string
-param region string = resourceGroup().location
-var regionFix = region
+param location string = resourceGroup().location
 var deployBastionBool = bool(deployBastion) 
 var sizeAppVm = 'Standard_D64_v5'
 var sizeMediaVm = 'Standard_L8as_v3'
@@ -49,7 +48,7 @@ module demonetwork './demo-network.bicep' = {
   params: {
     snetName : snetName
     vnetName : vnetName
-    region : regionFix
+    location : location
     projectName : projectName
     deployBastion : deployBastionBool
   }
@@ -67,7 +66,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
   name: 'proximityPlacementGroupDeployment'
   params: {
     name: 'ppg-${projectName}'
-    location: regionFix
+    location: location
   }
 }
 
@@ -121,7 +120,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
     vmSize: sizeAppVm 
     configurationProfile: '/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction'
     disablePasswordAuthentication: false
-    location : regionFix
+    location : location
     encryptionAtHost: false
   }
   dependsOn : [ demonetwork ]
@@ -173,7 +172,7 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     // Non-required parameters
     configurationProfile: '/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction'
     disablePasswordAuthentication: false
-    location : regionFix
+    location : location
     encryptionAtHost: false
   }
   dependsOn : [ demonetwork ]
