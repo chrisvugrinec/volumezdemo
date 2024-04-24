@@ -150,9 +150,7 @@
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
 				"deployBastion": "[steps('basics').deployBastion]",
 				"location": "[steps('basics').region]"
-			},
-			"kind": "Subscription",                        
-			"subscriptionId": "[steps('basics').location.subscription.id]"
+			}
 		}
 	}
 }
