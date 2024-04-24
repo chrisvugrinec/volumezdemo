@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "10361636125639617243"
+      "templateHash": "14590717773781064730"
     }
   },
   "functions": [
@@ -54,7 +54,10 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]"
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Azure Region. Default = Deployment location"
+      }
     }
   },
   "variables": {
@@ -4987,9 +4990,6 @@
         "parameters": {
           "name": {
             "value": "[format('ppg-{0}', variables('projectName'))]"
-          },
-          "location": {
-            "value": "westeurope"
           }
         },
         "template": {
