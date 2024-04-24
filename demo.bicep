@@ -65,6 +65,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
   name: 'proximityPlacementGroupDeployment'
   params: {
     name: 'ppg-${projectName}'
+    location: 'westeurope'
   }
 }
 
