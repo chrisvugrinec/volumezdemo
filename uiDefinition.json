@@ -17,6 +17,35 @@
 							}
 						},
 						{
+							"name": "region",
+							"type": "Microsoft.Common.DropDown",
+							"label": "Azure Region",
+							"multiselect": false,
+							"multiLine": false,
+							"constraints": {
+								"allowedValues": [
+								  {
+									"label": "East US",
+									"value": "eastus"
+								  },
+								  {
+									"label": "East US2",
+									"value": "eastus2"
+								  },
+								  {
+									"label": "West Europe",
+									"value": "westeurope"
+								  },
+								  {
+									"label": "Nort Europe",
+									"value": "norteurope"
+								  }
+								],
+								"required": true
+							  }
+
+						},
+						{
 							"name": "adminPassword",
 							"type": "Microsoft.Common.PasswordBox",
 							"label": "Password for your volumezdemoUser"
@@ -127,7 +156,7 @@
 				"nrAppVms": "[steps('basics').nrAppVms]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
 				"deployBastion": "[steps('basics').deployBastion]",
-				"region": "[steps('basics').location.location.name]"
+				"region": "[steps('basics').region]"
 			},
 			"kind": "Subscription",                        
 			"subscriptionId": "[steps('basics').location.subscription.id]",
