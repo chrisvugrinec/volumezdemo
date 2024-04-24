@@ -130,7 +130,7 @@
                                 "location": "[steps('basics').location.location.name]"
 			},
 			"kind": "Subscription",                        
-			"subscriptionId": "[steps('basics').resourceScope.subscription.id]",
+			"subscriptionId": "[steps('basics').location.subscription.id]",
 			"location": "[steps('basics').location.location.name]"
 		}
 	}
