@@ -73,7 +73,7 @@
 				"variables" : {
 					"location": {
                         "type": "string",
-						"defaultValue": "[resourceGroup().location]"						
+						"defaultValue": "[parameters('location')]"						
                     } 	
 				},
                 "parameters": {
