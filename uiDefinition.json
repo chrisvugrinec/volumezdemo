@@ -10,13 +10,6 @@
 					"label": "Basics",
 					"elements": [
 						{
-							"name": "location",
-							"type": "Microsoft.Common.ResourceScope",
-							"location": {
-								"resourceTypes": []
-							}
-						},
-						{
 							"name": "region",
 							"type": "Microsoft.Common.DropDown",
 							"label": "Azure Region",
@@ -159,8 +152,7 @@
 				"location": "[steps('basics').region]"
 			},
 			"kind": "Subscription",                        
-			"subscriptionId": "[steps('basics').location.subscription.id]",
-			"location": "[steps('basics').location.location.name]"
+			"subscriptionId": "[steps('basics').location.subscription.id]"
 		}
 	}
 }
