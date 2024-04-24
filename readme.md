@@ -3,6 +3,19 @@
 The following demo uses the Bicep modules from the Microsoft Verified Modules github repo:
 https://github.com/Azure/bicep-registry-modules
 
+
+## Bicep
+
+Create an Azure ARM template with this command:
+```
+az bicep build --file demo.bicep --outfile azuredeploy.json
+```
+Deploy direct via Bicep:
+```
+az deployment group create -g bicep --template-file demo.bicep  -n deploymentName1
+```
+
+
 The Bicep modules are converted to ARM templates and made available with the buttons below to give the Azure portal experience when deploying the resources:
 
 | Description | Template |
