@@ -88,6 +88,9 @@
                     },
                     "deployBastion": {
                         "value": "[parameters('deployBastion')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
                     }
                 },
                 "template": {
