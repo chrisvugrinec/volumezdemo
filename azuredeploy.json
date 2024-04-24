@@ -70,12 +70,6 @@
                     "scope": "inner"
                 },
                 "mode": "Incremental",
-				"variables" : {
-					"location": {
-                        "type": "string",
-						"defaultValue": "[parameters('location')]"						
-                    } 	
-				},
                 "parameters": {
                     "snetName": {
                         "value": "[variables('snetName')]"
