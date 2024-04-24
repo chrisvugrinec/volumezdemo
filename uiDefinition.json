@@ -156,7 +156,7 @@
 				"nrAppVms": "[steps('basics').nrAppVms]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
 				"deployBastion": "[steps('basics').deployBastion]",
-				"region": "[steps('basics').region]"
+				"location": "[steps('basics').region]"
 			},
 			"kind": "Subscription",                        
 			"subscriptionId": "[steps('basics').location.subscription.id]",
