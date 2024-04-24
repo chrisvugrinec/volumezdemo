@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "14590717773781064730"
+      "templateHash": "6281862042625970113"
     }
   },
   "functions": [
@@ -53,11 +53,7 @@
       "type": "bool"
     },
     "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Azure Region. Default = Deployment location"
-      }
+      "type": "string"
     }
   },
   "variables": {
