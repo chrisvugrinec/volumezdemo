@@ -16,7 +16,7 @@ param tenant_token string
 param nrAppVms int
 param nrMediaVms int
 param deployBastion bool
-param location string
+param location string = resourceGroup().location
 var sizeAppVm = 'Standard_D64_v5'
 var sizeMediaVm = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
