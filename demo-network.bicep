@@ -7,7 +7,6 @@ param deployBastion bool
 module virtualNetwork 'br/public:avm/res/network/virtual-network:0.1.5' = {
   name: 'virtualNetworkDeployment'
   params: {
-    // Required parameters
     addressPrefixes: [
       '10.0.0.0/16'
     ]
@@ -26,7 +25,7 @@ module virtualNetwork 'br/public:avm/res/network/virtual-network:0.1.5' = {
       }
     ]  
   }
-  
+  dependsOn : [ networkSecurityGroup, natGateway ]  
 }
 
 
@@ -45,13 +44,13 @@ module bastionHost 'br/public:avm/res/network/bastion-host:0.2.1' = if (deployBa
       zones: [ 1 ]
     }
   }
+  dependsOn : [ virtualNetwork ]
 }
 
 module networkSecurityGroup 'br/public:avm/res/network/network-security-group:0.1.3' = {
   name: 'networkSecurityGroupDeployment'
   params: {
-    name: 'nsg-${projectName}'
-    // Non-required parameters
+    name: 'nsg-${projectName}-${deployment().name}'
     location: location
     securityRules: [
       {
@@ -126,7 +125,7 @@ module networkSecurityGroup 'br/public:avm/res/network/network-security-group:0.
 module publicIpPrefix 'br/public:avm/res/network/public-ip-prefix:0.3.0' = {
   name: 'publicIpPrefixDeployment'
   params: {
-    name: 'pipfx-${projectName}'
+    name: 'pipfx-${projectName}-${deployment().name}'
     prefixLength: 30
     location: location
   }
@@ -135,7 +134,7 @@ module publicIpPrefix 'br/public:avm/res/network/public-ip-prefix:0.3.0' = {
 module natGateway 'br/public:avm/res/network/nat-gateway:1.0.4' = {
   name: 'natGatewayDeployment'
   params: {
-    name: 'ngw-${projectName}'
+    name: 'ngw-${projectName}-${deployment().name}'
     zones: [ 1 ]
     location: location
     publicIPPrefixResourceIds: [ publicIpPrefix.outputs.resourceId ]
