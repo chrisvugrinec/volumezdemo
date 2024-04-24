@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "5256648989083684001"
+      "templateHash": "10361636125639617243"
     }
   },
   "functions": [
@@ -4987,6 +4987,9 @@
         "parameters": {
           "name": {
             "value": "[format('ppg-{0}', variables('projectName'))]"
+          },
+          "location": {
+            "value": "westeurope"
           }
         },
         "template": {
