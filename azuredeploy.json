@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "13094601282136219265"
+      "templateHash": "6313285687464557017"
     }
   },
   "functions": [
@@ -103,7 +103,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.26.170.59819",
-              "templateHash": "11373196300456467451"
+              "templateHash": "602064623126905638"
             }
           },
           "parameters": {
@@ -114,7 +114,8 @@
               "type": "string"
             },
             "region": {
-              "type": "string"
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
             },
             "projectName": {
               "type": "string"
