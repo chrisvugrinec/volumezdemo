@@ -127,7 +127,7 @@
 				"nrAppVms": "[steps('basics').nrAppVms]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
 				"deployBastion": "[steps('basics').deployBastion]",
-				"region": "[steps('basics').location.location.name]"
+				"region": "westeurope"
 			},
 			"kind": "Subscription",                        
 			"subscriptionId": "[steps('basics').location.subscription.id]",
