@@ -181,7 +181,7 @@
 				"location": "[steps('basics').resourceScope.location.name]"
 			},
 			"kind": "Subscription",
-			"location": "[steps('basics').vnetCombo1.location.name]",
+			"location": "[steps('basics').resourceScope.location.name]",
 			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
 		}
 	}

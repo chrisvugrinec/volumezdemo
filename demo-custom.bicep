@@ -32,7 +32,23 @@ var cloudInitScript = replaceMultiple(script, {
 })
 
 
+/*
+#######################################################################################
+#
+#  Resource Group
+#
+#######################################################################################
+*/
 
+module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
+  scope: subscription(subscription().subscriptionId)
+
+  name: 'resourceGroupDeployment'
+  params: {
+    name: rgName
+    location: location
+  }
+}
 
 /*
 #######################################################################################
@@ -52,23 +68,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
   dependsOn : [ rg ]
 }
 
-/*
-#######################################################################################
-#
-#  Resource Group
-#
-#######################################################################################
-*/
 
-module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
-  scope: subscription(subscription().subscriptionId)
-
-  name: 'resourceGroupDeployment'
-  params: {
-    name: rgName
-    location: location
-  }
-}
 
 /*
 #######################################################################################
@@ -169,7 +169,6 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     }
     osType: 'Linux'
     vmSize: sizeMediaVm
-    // Non-required parameters
     configurationProfile: '/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction'
     disablePasswordAuthentication: false
     location : location
