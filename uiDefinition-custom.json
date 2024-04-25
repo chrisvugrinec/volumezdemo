@@ -130,14 +130,33 @@
 							  }
 						},
 						{
-                            				"name": "resourceScopeNet",
-                            				"type": "Microsoft.Common.ResourceScope",
-                            				"subnetResourceID": {
-                                				"resourceTypes": [
-                                    					"microsoft.resources/virtualnetworks/subnet"
-                                				]
-                            				}
-                        			}
+							"name": "vnetCombo1",
+							"type": "Microsoft.Network.VirtualNetworkCombo",
+							"label": {
+								"virtualNetwork": "Virtual network",
+								"subnets": "Subnets"
+							},
+							"toolTip": {
+								"virtualNetwork": "Select your virtualNetwork",
+								"subnets": "Select your subnet"
+							},
+							"constraints": {
+								"minAddressPrefixSize": "/20"
+							},
+							"options": {
+								"hideExisting": false
+							},
+							"subnets": {
+								"subnet1": {
+									"label": "Subnet for VM",
+									"constraints": {
+										"minAddressPrefixSize": "/22",
+										"minAddressCount": 12
+									}
+								}
+							},
+							"visible": true
+						}
 					]
 				}
 			]
