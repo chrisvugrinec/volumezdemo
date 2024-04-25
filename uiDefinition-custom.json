@@ -169,7 +169,8 @@
 				"sizeAppVm" : "[steps('basics').sizeAppVm]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
 				"sizeMediaVm" : "[steps('basics').sizeMediaVm]",
-				"subnetResourceID": "[steps('basics').vnetCombo1.subnets.subnet1]",
+				"vnetName": "[steps('basics').vnetCombo1.name]",
+				"subnetName": "[steps('basics').vnetCombo1.subnets.subnet1.name]",
 				"location": "[steps('basics').resourceScope.location.name]"
 			},
 			"kind": "ResourceGroup",

@@ -16,7 +16,8 @@ param tenant_token string
 param nrAppVms int
 param nrMediaVms int
 param location string = resourceGroup().location
-param subnetResourceID string
+param vnetName string
+param subnetName string
 param sizeAppVm string = 'Standard_D64_v5'
 param sizeMediaVm string = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
@@ -78,7 +79,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
           {
             enablePublicIP: false
             name: 'ipc-${projectName}-app${i}'
-            subnetResourceId: subnetResourceID
+            subnetResourceId:  resourceId('Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
             zones: [
               '1'
             ]
@@ -128,7 +129,7 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
           {
             enablePublicIP: false
             name: 'ipc-${projectName}-media${i}'
-            subnetResourceId: subnetResourceID
+            subnetResourceId:  resourceId('Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
             zones: [
               '1'
             ]
