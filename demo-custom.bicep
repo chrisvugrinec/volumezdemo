@@ -15,7 +15,7 @@ param adminPassword string
 param tenant_token string
 param nrAppVms int
 param nrMediaVms int
-param location string
+param location string = resourceGroup().location
 param vnetName string
 param subnetName string
 param rgName string

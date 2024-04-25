@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "9459915025788829074"
+      "templateHash": "16228720945731236590"
     }
   },
   "functions": [
@@ -50,7 +50,8 @@
       "type": "int"
     },
     "location": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
     },
     "vnetName": {
       "type": "string"
