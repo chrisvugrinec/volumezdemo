@@ -178,10 +178,10 @@
 				"sizeMediaVm" : "[steps('basics').sizeMediaVm]",
 				"vnetName": "[steps('basics').vnetCombo1.name]",
 				"subnetName": "[steps('basics').vnetCombo1.subnets.subnet1.name]",
-				"location": "[steps('basics').resourceScope.location.name]"
+				"location": "[steps('basics').resourceScope.location]"
 			},
 			"kind": "Subscription",
-			"location": "[steps('basics').resourceScope.location.name]",
+			"location": "[steps('basics').resourceScope.location]",
 			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
 		}
 	}
