@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "11319804390943880652"
+      "templateHash": "14321365681003522475"
     }
   },
   "functions": [
@@ -387,7 +387,10 @@
             }
           }
         }
-      }
+      },
+      "dependsOn": [
+        "rg"
+      ]
     },
     "rg": {
       "type": "Microsoft.Resources/deployments",
@@ -5934,7 +5937,8 @@
         }
       },
       "dependsOn": [
-        "proximityPlacementGroup"
+        "proximityPlacementGroup",
+        "rg"
       ]
     },
     "mediaVirtualMachine": {
@@ -11029,7 +11033,8 @@
         }
       },
       "dependsOn": [
-        "proximityPlacementGroup"
+        "proximityPlacementGroup",
+        "rg"
       ]
     }
   }

@@ -49,6 +49,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
     name: 'ppg-${projectName}'
     location: location
   }
+  dependsOn : [ rg ]
 }
 
 /*
@@ -122,6 +123,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
     location : location
     encryptionAtHost: false
   }
+  dependsOn : [ rg ]
 }]
 
 
@@ -173,6 +175,7 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     location : location
     encryptionAtHost: false
   }
+  dependsOn : [ rg ]
 }]
 
 
