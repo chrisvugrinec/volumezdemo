@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "15199644905533679242"
+      "templateHash": "11319804390943880652"
     }
   },
   "functions": [
@@ -82,7 +82,7 @@
       "apiVersion": "2022-09-01",
       "name": "proximityPlacementGroupDeployment",
       "subscriptionId": "[subscription().subscriptionId]",
-      "resourceGroup": "resourceGroupDeployment",
+      "resourceGroup": "[parameters('rgName')]",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -387,10 +387,7 @@
             }
           }
         }
-      },
-      "dependsOn": [
-        "rg"
-      ]
+      }
     },
     "rg": {
       "type": "Microsoft.Resources/deployments",
@@ -857,7 +854,7 @@
       "apiVersion": "2022-09-01",
       "name": "[format('vmDeployment-app{0}', range(1, parameters('nrAppVms'))[copyIndex()])]",
       "subscriptionId": "[subscription().subscriptionId]",
-      "resourceGroup": "resourceGroupDeployment",
+      "resourceGroup": "[parameters('rgName')]",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -5937,8 +5934,7 @@
         }
       },
       "dependsOn": [
-        "proximityPlacementGroup",
-        "rg"
+        "proximityPlacementGroup"
       ]
     },
     "mediaVirtualMachine": {
@@ -5950,7 +5946,7 @@
       "apiVersion": "2022-09-01",
       "name": "[format('vmDeployment-media{0}', range(1, parameters('nrMediaVms'))[copyIndex()])]",
       "subscriptionId": "[subscription().subscriptionId]",
-      "resourceGroup": "resourceGroupDeployment",
+      "resourceGroup": "[parameters('rgName')]",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -11033,8 +11029,7 @@
         }
       },
       "dependsOn": [
-        "proximityPlacementGroup",
-        "rg"
+        "proximityPlacementGroup"
       ]
     }
   }
