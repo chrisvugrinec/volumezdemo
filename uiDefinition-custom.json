@@ -177,12 +177,12 @@
 				"sizeMediaVm" : "[steps('basics').sizeMediaVm]",
 				"vnetName": "[steps('basics').vnetCombo1.name]",
 				"subnetName": "[steps('basics').vnetCombo1.subnets.subnet1.name]",
-				"location": "[steps('basics').resourceScope.location.name",
+				"location": "[steps('basics').resourceScope.location.name]",
 				"rgName": "[steps('basics').rgName]",
 				"rgNameNetwork": "[steps('basics').vnetCombo1.resourceGroup]"
 			},
 			"kind": "Subscription",
-			"location": "[steps('basics').resourceScope.location.name",
+			"location": "[steps('basics').resourceScope.location.name]",
 			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
 		}
 	}
