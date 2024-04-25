@@ -150,7 +150,7 @@
 								"subnet1": {
 									"label": "Subnet for VM",
 									"constraints": {
-										"minAddressPrefixSize": "/22",
+										"minAddressPrefixSize": "/24",
 										"minAddressCount": 12
 									}
 								}
