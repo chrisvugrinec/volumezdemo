@@ -181,9 +181,9 @@
 				"rgName": "[steps('basics').rgName]",
 				"rgNameNetwork": "[steps('basics').vnetCombo1.resourceGroup]"
 			},
-			"kind": "Subscription",
-			"location": "[steps('basics').resourceScope.location.name]",
-			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
+                        "kind": "ResourceGroup",
+                        "location": "[steps('basics').resourceScope.location.name]",
+                        "resourceGroupId": "[steps('basics').resourceScope.resourceGroup.id]"
 		}
 	}
 }
