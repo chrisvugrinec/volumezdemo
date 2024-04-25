@@ -131,7 +131,7 @@
 						},
 						{
                             "name": "resourceScopeNet",
-                            "type": "Microsoft.Common.virtualnetworks",
+                            "type": "Microsoft.virtualnetworks",
                             "subnetResourceID": {
                                 "resourceTypes": [
                                     "microsoft.resources/virtualnetworks/subnet"
