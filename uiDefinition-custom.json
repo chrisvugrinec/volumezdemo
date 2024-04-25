@@ -141,6 +141,7 @@
 								"virtualNetwork": "Virtual network",
 								"subnets": "Subnets"
 							},
+							"newOrExisting": "existing",
 							"toolTip": {
 								"virtualNetwork": "Select your virtualNetwork",
 								"subnets": "Select your subnet"
