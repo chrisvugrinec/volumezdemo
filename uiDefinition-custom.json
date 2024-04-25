@@ -141,7 +141,7 @@
 								"subnets": "Select your subnet"
 							},
 							"constraints": {
-								"minAddressPrefixSize": "/20"
+								"minAddressPrefixSize": "/16"
 							},
 							"options": {
 								"hideExisting": false
