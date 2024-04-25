@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "4448864579425010975"
+      "templateHash": "2899158695365293623"
     }
   },
   "functions": [
@@ -397,7 +397,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "resourceGroupDeployment",
-      "subscriptionId": "[subscription().subscriptionId]",
+      "subscriptionId": "[subscription().id]",
       "location": "[resourceGroup().location]",
       "properties": {
         "expressionEvaluationOptions": {
