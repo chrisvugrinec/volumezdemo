@@ -43,7 +43,7 @@ var cloudInitScript = replaceMultiple(script, {
 */
 
 module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-group:0.1.2' = {
-  scope: resourceGroup(subscription().id,rg.name)
+  scope: resourceGroup(subscription().subscriptionId,rg.name)
   name: 'proximityPlacementGroupDeployment'
   params: {
     name: 'ppg-${projectName}'
@@ -60,7 +60,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
 */
 
 module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
-  scope: subscription(subscription().id)
+  scope: subscription(subscription().subscriptionId)
 
   name: 'resourceGroupDeployment'
   params: {
@@ -78,7 +78,7 @@ module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
 */
 
 module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [for i in range(1, nrAppVms): {
-  scope: resourceGroup(subscription().id,rg.name)
+  scope: resourceGroup(subscription().subscriptionId,rg.name)
   name: 'vmDeployment-app${i}'
   params: {
     adminUsername: '${projectName}User'
@@ -127,7 +127,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
 
 
 module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [for i in range(1, nrMediaVms): {
-  scope: resourceGroup(subscription().id,rg.name)
+  scope: resourceGroup(subscription().subscriptionId,rg.name)
   name: 'vmDeployment-media${i}'
   params: {
     adminUsername: '${projectName}User'

@@ -6,7 +6,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.26.170.59819",
-      "templateHash": "2899158695365293623"
+      "templateHash": "15199644905533679242"
     }
   },
   "functions": [
@@ -50,8 +50,7 @@
       "type": "int"
     },
     "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
+      "type": "string"
     },
     "vnetName": {
       "type": "string"
@@ -82,7 +81,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "proximityPlacementGroupDeployment",
-      "subscriptionId": "[subscription().id]",
+      "subscriptionId": "[subscription().subscriptionId]",
       "resourceGroup": "resourceGroupDeployment",
       "properties": {
         "expressionEvaluationOptions": {
@@ -397,7 +396,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "resourceGroupDeployment",
-      "subscriptionId": "[subscription().id]",
+      "subscriptionId": "[subscription().subscriptionId]",
       "location": "[resourceGroup().location]",
       "properties": {
         "expressionEvaluationOptions": {
@@ -857,7 +856,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "[format('vmDeployment-app{0}', range(1, parameters('nrAppVms'))[copyIndex()])]",
-      "subscriptionId": "[subscription().id]",
+      "subscriptionId": "[subscription().subscriptionId]",
       "resourceGroup": "resourceGroupDeployment",
       "properties": {
         "expressionEvaluationOptions": {
@@ -5950,7 +5949,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "[format('vmDeployment-media{0}', range(1, parameters('nrMediaVms'))[copyIndex()])]",
-      "subscriptionId": "[subscription().id]",
+      "subscriptionId": "[subscription().subscriptionId]",
       "resourceGroup": "resourceGroupDeployment",
       "properties": {
         "expressionEvaluationOptions": {
