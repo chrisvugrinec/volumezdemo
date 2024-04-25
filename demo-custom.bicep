@@ -60,7 +60,8 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
 */
 
 module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
-  scope:  subscription(subscription().id)
+  scope: subscription(subscription().id)
+
   name: 'resourceGroupDeployment'
   params: {
     name: rgName

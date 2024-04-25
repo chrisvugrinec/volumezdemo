@@ -180,9 +180,9 @@
 				"subnetName": "[steps('basics').vnetCombo1.subnets.subnet1.name]",
 				"location": "[steps('basics').resourceScope.location.name]"
 			},
-			"kind": "ResourceGroup",
+			"kind": "Subscription",
 			"location": "[steps('basics').vnetCombo1.location.name]",
-			"resourceGroupId": "[steps('basics').resourceScope.resourceGroup.id]"		
+			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
 		}
 	}
 }
