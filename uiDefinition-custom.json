@@ -130,14 +130,14 @@
 							  }
 						},
 						{
-                            "name": "resourceScopeNet",
-                            "type": "Microsoft.Common.ResourceScope",
-                            "subnetResourceID": {
-                                "resourceTypes": [
-                                    "microsoft.resources/virtualnetworks/subnet"
-                                ]
-                            }
-                        }
+                            				"name": "resourceScopeNet",
+                            				"type": "Microsoft.Common.ResourceScope",
+                            				"subnetResourceID": {
+                                				"resourceTypes": [
+                                    					"microsoft.resources/virtualnetworks/subnet"
+                                				]
+                            				}
+                        			}
 					]
 				}
 			]
