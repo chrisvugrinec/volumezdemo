@@ -1,4 +1,3 @@
-
 func replaceMultiple(input string, replacements { *: string }) string => reduce(
   items(replacements), input, (cur, next) => replace(string(cur), next.key, next.value))
 
@@ -15,21 +14,22 @@ param adminPassword string
 param tenant_token string
 param nrAppVms int
 param nrMediaVms int
-param location string = resourceGroup().location
+param location string 
 param vnetName string
 param subnetName string
-param rgName string
 param sizeAppVm string = 'Standard_D64_v5'
 param sizeMediaVm string = 'Standard_L8as_v3'
+param rgName string
+param rgNameNetwork string
+
 var projectName = 'volumezdemo'
-
-
 var signup_domain = 'signup.volumez.com'
 var script = loadTextContent('./scripts/deploy_connector.sh')
 var cloudInitScript = replaceMultiple(script, {
   '{0}': tenant_token
   '{1}': signup_domain
 })
+
 
 
 /*
@@ -40,8 +40,9 @@ var cloudInitScript = replaceMultiple(script, {
 #######################################################################################
 */
 
+/*
 module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
-  scope: subscription(subscription().subscriptionId)
+  scope: subscription()
 
   name: 'resourceGroupDeployment'
   params: {
@@ -49,6 +50,7 @@ module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
     location: location
   }
 }
+*/
 
 /*
 #######################################################################################
@@ -59,15 +61,13 @@ module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
 */
 
 module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-group:0.1.2' = {
-  scope: resourceGroup(subscription().subscriptionId,rgName)
+  scope : resourceGroup(rgName)
   name: 'proximityPlacementGroupDeployment'
   params: {
-    name: 'ppg-${projectName}'
+    name: 'ppg-${projectName}-${deployment().name}'
     location: location
   }
-  dependsOn : [ rg ]
 }
-
 
 
 /*
@@ -79,12 +79,13 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
 */
 
 module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [for i in range(1, nrAppVms): {
-  scope: resourceGroup(subscription().subscriptionId,rgName)
-  name: 'vmDeployment-app${i}'
+  scope : resourceGroup(rgName)
+  name: 'vmDeployment-app${deployment().name}${i}'
   params: {
     adminUsername: '${projectName}User'
     adminPassword: adminPassword
     availabilityZone: 0
+    customData: cloudInitScript
     proximityPlacementGroupResourceId: proximityPlacementGroup.outputs.resourceId
 
     imageReference: {
@@ -93,14 +94,14 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
       sku: '8_7'
       version: 'latest'
     }
-    name: 'vm-${projectName}-app${i}'
+    name: 'vm-${projectName}-app${deployment().name}${i}'
     nicConfigurations: [
       {
         ipConfigurations: [
           {
             enablePublicIP: false
-            name: 'ipc-${projectName}-app${i}'
-            subnetResourceId:  resourceId('Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
+            name: 'ipc-${projectName}-app${deployment().name}${i}'
+            subnetResourceId:  resourceId(rgNameNetwork,'Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
             zones: [
               '1'
             ]
@@ -123,14 +124,13 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
     location : location
     encryptionAtHost: false
   }
-  dependsOn : [ rg ]
 }]
 
 
 
 module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [for i in range(1, nrMediaVms): {
-  scope: resourceGroup(subscription().subscriptionId,rgName)
-  name: 'vmDeployment-media${i}'
+  scope : resourceGroup(rgName)
+  name: 'vmDeployment-media${deployment().name}${i}'
   params: {
     adminUsername: '${projectName}User'
     adminPassword: adminPassword
@@ -144,14 +144,14 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
       sku: '8_7'
       version: 'latest'
     }
-    name: 'vm-${projectName}-media${i}'
+    name: 'vm-${projectName}-media${deployment().name}${i}'
     nicConfigurations: [
       {
         ipConfigurations: [
           {
             enablePublicIP: false
             name: 'ipc-${projectName}-media${i}'
-            subnetResourceId:  resourceId('Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
+            subnetResourceId:  resourceId(rgNameNetwork,'Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
             zones: [
               '1'
             ]
@@ -174,7 +174,8 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     location : location
     encryptionAtHost: false
   }
-  dependsOn : [ rg ]
 }]
+
+output snetResID string = resourceId('Microsoft.Network/VirtualNetworks/subnets', vnetName, subnetName)
 
 

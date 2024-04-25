@@ -29,12 +29,6 @@
 							"label": "You can find your tenant_token in the Volumez developer info"
 						},
 						{
-							"name": "location",
-							"type": "Microsoft.Common.TextBox",
-							"label": "Region"
-						},
-
-						{
 							"name": "rgName",
 							"type": "Microsoft.Common.TextBox",
 							"label": "ResourceGroup for your deployment"
@@ -177,17 +171,18 @@
 			"parameters": {
 				"adminPassword": "[steps('basics').adminPassword]",
 				"tenant_token": "[steps('basics').tenant_token]",
-				"rgName": "[steps('basics').rgName]",
 				"nrAppVms": "[steps('basics').nrAppVms]",
 				"sizeAppVm" : "[steps('basics').sizeAppVm]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
 				"sizeMediaVm" : "[steps('basics').sizeMediaVm]",
 				"vnetName": "[steps('basics').vnetCombo1.name]",
 				"subnetName": "[steps('basics').vnetCombo1.subnets.subnet1.name]",
-				"location": "[steps('basics').location]"
+				"location": "[steps('basics').resourceScope.location.name",
+				"rgName": "[steps('basics').rgName]",
+				"rgNameNetwork": "[steps('basics').vnetCombo1.resourceGroup]"
 			},
 			"kind": "Subscription",
-			"location": "[steps('basics').location]",
+			"location": "[steps('basics').resourceScope.location.name",
 			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
 		}
 	}
