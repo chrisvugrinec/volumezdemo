@@ -29,6 +29,12 @@
 							"label": "You can find your tenant_token in the Volumez developer info"
 						},
 						{
+							"name": "location",
+							"type": "Microsoft.Common.TextBox",
+							"label": "Region"
+						},
+
+						{
 							"name": "rgName",
 							"type": "Microsoft.Common.TextBox",
 							"label": "ResourceGroup for your deployment"
@@ -178,10 +184,10 @@
 				"sizeMediaVm" : "[steps('basics').sizeMediaVm]",
 				"vnetName": "[steps('basics').vnetCombo1.name]",
 				"subnetName": "[steps('basics').vnetCombo1.subnets.subnet1.name]",
-				"location": "westeurope"
+				"location": "[steps('basics').location]"
 			},
 			"kind": "Subscription",
-			"location": "westeurope",
+			"location": "[steps('basics').location]",
 			"subscriptionId": "[steps('basics').resourceScope.location.subscriptionId]"
 		}
 	}
