@@ -17,11 +17,9 @@ param nrAppVms int
 param nrMediaVms int
 param location string = resourceGroup().location
 param subnetResourceID string
-param sizeAppVm = 'Standard_D64_v5'
-param sizeMediaVm = 'Standard_L8as_v3'
+param sizeAppVm string = 'Standard_D64_v5'
+param sizeMediaVm string = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
-var snetName = 'snet-${projectName}-vms'
-var vnetName = 'vnet-${projectName}-services'
 
 
 var signup_domain = 'signup.volumez.com'
@@ -103,7 +101,6 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
     location : location
     encryptionAtHost: false
   }
-  dependsOn : [ demonetwork ]
 }]
 
 
@@ -155,7 +152,6 @@ module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [
     location : location
     encryptionAtHost: false
   }
-  dependsOn : [ demonetwork ]
 }]
 
 
