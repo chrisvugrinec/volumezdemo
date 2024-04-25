@@ -18,6 +18,7 @@ param nrMediaVms int
 param location string = resourceGroup().location
 param vnetName string
 param subnetName string
+param rgName string
 param sizeAppVm string = 'Standard_D64_v5'
 param sizeMediaVm string = 'Standard_L8as_v3'
 var projectName = 'volumezdemo'
@@ -42,9 +43,28 @@ var cloudInitScript = replaceMultiple(script, {
 */
 
 module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-group:0.1.2' = {
+  scope: resourceGroup(subscription().id,rg.name)
   name: 'proximityPlacementGroupDeployment'
   params: {
     name: 'ppg-${projectName}'
+    location: location
+  }
+}
+
+/*
+#######################################################################################
+#
+#  Resource Group
+#
+#######################################################################################
+*/
+
+module rg 'br/public:avm/res/resources/resource-group:0.2.3' = {
+  scope:  subscription(subscription().id)
+  name: 'resourceGroupDeployment'
+  params: {
+    // Required parameters
+    name: rgName
     location: location
   }
 }
@@ -58,7 +78,7 @@ module proximityPlacementGroup 'br/public:avm/res/compute/proximity-placement-gr
 */
 
 module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [for i in range(1, nrAppVms): {
-
+  scope: resourceGroup(subscription().id,rg.name)
   name: 'vmDeployment-app${i}'
   params: {
     adminUsername: '${projectName}User'
@@ -107,7 +127,7 @@ module appVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [fo
 
 
 module mediaVirtualMachine 'br/public:avm/res/compute/virtual-machine:0.2.3' = [for i in range(1, nrMediaVms): {
-
+  scope: resourceGroup(subscription().id,rg.name)
   name: 'vmDeployment-media${i}'
   params: {
     adminUsername: '${projectName}User'

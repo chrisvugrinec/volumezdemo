@@ -29,6 +29,11 @@
 							"label": "You can find your tenant_token in the Volumez developer info"
 						},
 						{
+							"name": "rgName",
+							"type": "Microsoft.Common.TextBox",
+							"label": "ResourceGroup for your deployment"
+						},
+						{
 							"name": "nrAppVms",
 							"type": "Microsoft.Common.DropDown",
 							"label": "Nr of Application VMS",
@@ -165,6 +170,7 @@
 			"parameters": {
 				"adminPassword": "[steps('basics').adminPassword]",
 				"tenant_token": "[steps('basics').tenant_token]",
+				"rgName": "[steps('basics').rgName]",
 				"nrAppVms": "[steps('basics').nrAppVms]",
 				"sizeAppVm" : "[steps('basics').sizeAppVm]",
 				"nrMediaVms": "[steps('basics').nrMediaVms]",
