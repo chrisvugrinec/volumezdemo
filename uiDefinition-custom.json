@@ -59,19 +59,29 @@
 						},
 						{
 							"name": "sizeAppVm",
-							"type": "Microsoft.Common.DropDown",
-							"label": "VM size App VM",
-							"multiselect": false,
-							"multiLine": false,
+							"type": "Microsoft.Compute.SizeSelector",
+							"label": "Size App VM",
+							"toolTip": "Pick the size of your application VM's",
+							"recommendedSizes": [
+							  "Standard_D64_v5"
+							],
 							"constraints": {
-								"allowedValues": [
-								  {
-									"label": "Standard_D64_v5",
-									"value": "Standard_D64_v5"
-								  }
-								],
-								"required": true
-							  }
+							  "allowedSizes": [],
+							  "excludedSizes": [],
+							  "numAvailabilityZonesRequired": 1,
+							  "zone": "1"
+							},
+							"options": {
+							  "hideDiskTypeFilter": false
+							},
+							"osPlatform": "Linux",
+							"imageReference": {
+							  "publisher": "RedHat",
+							  "offer": "RHEL",
+							  "sku": "8.7"
+							},
+							"visible": true,
+							"required": true
 						},
 						{
 							"name": "nrMediaVms",
@@ -121,30 +131,28 @@
 						{
 							"name": "sizeMediaVm",
 							"type": "Microsoft.Compute.SizeSelector",
-							"label": "Size",
-							"toolTip": "",
+							"label": "Size Media VM",
+							"toolTip": "Pick the size of your media VM's",
 							"recommendedSizes": [
-							  "Standard_D1",
-							  "Standard_D2",
-							  "Standard_D3"
+							  "Standard_L8as_v3"
 							],
 							"constraints": {
 							  "allowedSizes": [],
 							  "excludedSizes": [],
-							  "numAvailabilityZonesRequired": 3,
-							  "zone": "3"
+							  "numAvailabilityZonesRequired": 1,
+							  "zone": "1"
 							},
 							"options": {
 							  "hideDiskTypeFilter": false
 							},
-							"osPlatform": "Windows",
+							"osPlatform": "Linux",
 							"imageReference": {
-							  "publisher": "MicrosoftWindowsServer",
-							  "offer": "WindowsServer",
-							  "sku": "2012-R2-Datacenter"
+							  "publisher": "RedHat",
+							  "offer": "RHEL",
+							  "sku": "8.7"
 							},
-							"count": 2,
-							"visible": true
+							"visible": true,
+							"required": true
 						},
 						{
 							"name": "vnetCombo1",
