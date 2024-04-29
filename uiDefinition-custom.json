@@ -179,6 +179,7 @@
 								"minAddressPrefixSize": "/16"
 							},
 							"options": {
+								"newOrExisting" : "existing",
 								"hideExisting": false
 							},
 							"subnets": {
