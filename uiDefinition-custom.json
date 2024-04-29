@@ -67,9 +67,7 @@
 							],
 							"constraints": {
 							  "allowedSizes": [],
-							  "excludedSizes": [],
-							  "numAvailabilityZonesRequired": 1,
-							  "zone": "1"
+							  "excludedSizes": []
 							},
 							"options": {
 							  "hideDiskTypeFilter": false
@@ -138,9 +136,7 @@
 							],
 							"constraints": {
 							  "allowedSizes": [],
-							  "excludedSizes": [],
-							  "numAvailabilityZonesRequired": 1,
-							  "zone": "1"
+							  "excludedSizes": []
 							},
 							"options": {
 							  "hideDiskTypeFilter": false
